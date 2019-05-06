@@ -7,11 +7,8 @@
         <div class="navbar-nav">
             <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
             <a class="nav-item nav-link" href="{{ path('article') }}">Tous les articles</a>
-            {% if 'ROLE_USER'is_granted('IS_AUTHENTICATED_FULLY') %}
                 <a class="nav-item nav-link" href="{{ path('a') }}">Faire un article</a>
-                {% else %}
                 <a class="nav-item nav-link" href="{{ path('login') }}">Veuillez vous connecter pour écrire un article</a>
-            {%  endif %}
         </div>
     </div>
     <a href="{{ 'register' }}" class="btn btn-info" onclick="" >S'enregistrer</a>
