@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ArticleController!{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+    <div class="example-wrapper">
+    <div class="jumbotron">
+        <h1>Tout les {{ controller_name }}! </h1>
+
+    </div>
+
+    </div>
+    <div class="row">
+
+        {% for art in article %}
+            <div class="col-4">
+                {{ art.title }}
+                {{ art.image }}
+                <a href="{{'showarticle'}}" class="btn btn-info"  >Voir plus de détails</a>
+
+            </div>
+        {% endfor %}
+    </div>
+    <div class="example-wrapper">
+        <ul>
+            {% for art in article %}
+                <div class="card" style="width: 18rem;">
+                    <img class="card-img-top" src="{{ art}}" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ art.title }}</h5>
+                        <a href="{{ path('showarticle') }}" class="btn btn-primary">Detail article</a>
+                    </div>
+                </div>
+            {% endfor %}
+
+        </ul>
+    </div>
+{% endblock %}

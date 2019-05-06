@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        {% block stylesheets %}
+            <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet"/>
+            <link href="{{ asset('css/style.css') }}" rel="stylesheet"/>
+            <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+        {% endblock %}
+
+
+
+    </head>
+    <body>
+    {% block parts %}
+
+    {% include'parts/header.html.twig'  with{'name':'header'} %}
+    {% include'parts/nav.html.twig' with{'name':'nav'} %}
+    {% endblock %}
+
+    {% block body %}{% endblock %}
+        {% block javascripts %}
+            <script src="{{ asset('js/script.js') }}"></script>
+        {% endblock %}
+
+
+    {% block partsdeux %}
+    {% include'parts/footer.html.twig' with{'name':'footer'} %}
+    {% endblock %}
+    </body>
+</html>
