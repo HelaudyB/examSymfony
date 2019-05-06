@@ -16,25 +16,12 @@
 
     </div>
     <div class="row">
-
-        {% for art in article %}
-            <div class="col-4">
-                {{ art.title }}
-                {{ art.image }}
-                <a href="{{'showarticle'}}" class="btn btn-info"  >Voir plus de détails</a>
-
-            </div>
-        {% endfor %}
-    </div>
-    <div class="example-wrapper">
         <ul>
             {% for art in article %}
-                <div class="card" style="width: 18rem;">
-                    <img class="card-img-top" src="{{ art}}" alt="Card image cap">
-                    <div class="card-body">
-                        <h5 class="card-title">{{ art.title }}</h5>
-                        <a href="{{ path('showarticle') }}" class="btn btn-primary">Detail article</a>
-                    </div>
+                <div class="col-3" style="width: 18rem;">
+                    <img  src="{{ art.image}}" alt="image">
+                    <h5>{{ art.title }}</h5>
+                    <a href="{{ path('article-detail', {'article': art.id}) }}" class="btn btn-primary">Détail article</a>
                 </div>
             {% endfor %}
 

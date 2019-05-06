@@ -25,7 +25,7 @@ class ArticleController extends AbstractController
         ]);
     }
     /**
-     * @Route("/article/detail", name="showarticle")
+     * @Route("/detail/{article}", name="article-detail")
      */
     public function showArticle(Article $article)
     {
@@ -36,8 +36,9 @@ class ArticleController extends AbstractController
     }
 
     /**
-     * @Route("/article/{article}", name="addarticle", requirements={"article"="^(?!register).+"})
+     * @Route("/article/add", name="article-add")
      */
+    //@Route("/article/{article}", name="addarticle", requirements={"article"="^(?!register).+"})
     public function addArticle(Request $request)
     {
         $form = $this->createForm(ArticleType::class, new Article());

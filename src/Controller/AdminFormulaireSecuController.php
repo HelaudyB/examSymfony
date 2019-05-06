@@ -23,10 +23,10 @@ class AdminFormulaireSecuController extends AbstractController
         return $this->render('security/login.html.twig', ['last_username' => $lastUsername, 'error' => $error]);
     }
     /**
-     * @Route("/logout", name="app_logout")
+     * @Route("/logout", name="app_logout", methods={"GET"})
      */
     public function logout(Request $request)
     {
-        return $this->redirectToRoute('app_login', ['_locale'=>$request->getLocale()]);
+        return $this->render('security/logout.html.twig', ['_locale'=>$request->getLocale()]);
     }
 }
