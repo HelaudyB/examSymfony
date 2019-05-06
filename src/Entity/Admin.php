@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
@@ -112,4 +113,26 @@ class Admin implements UserInterface
         // If you store any temporary, sensitive data on the user, clear it here
         // $this->plainPassword = null;
     }
+    public function index()
+    {
+        // usually you'll want to make sure the user is authenticated first
+        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
+
+        // returns your User object, or null if the user is not authenticated
+        // use inline documentation to tell your editor your exact User class
+        /** @var \App\Entity\User $user */
+        $user = $this->getUser();
+
+        // Call whatever methods you've added to your User class
+        // For example, if you added a getFirstName() method, you can use that.
+        return new Response('Well hi there '.$user->getUsername());
+    }
+    public function adminDashboard()
+    {
+        $this->denyAccessUnlessGranted('ROLE_USER');
+
+        // or add an optional message - seen by developers
+        $this->denyAccessUnlessGranted('ROLE_USER', null, 'Cet utilisateur a tenté d\'aller dans une page réservée à ROLE_ADMIN');
+    }
+
 }

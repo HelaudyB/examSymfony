@@ -36,7 +36,7 @@ class ArticleController extends AbstractController
     }
 
     /**
-     * @Route("/article/add", name="article-add")
+     * @Route("/article/add", name="article-add", requirements={"article"="^(?!register).+"})
      */
     //@Route("/article/{article}", name="addarticle", requirements={"article"="^(?!register).+"})
     public function addArticle(Request $request)
@@ -49,7 +49,7 @@ class ArticleController extends AbstractController
             $em->persist($article);
             $em->flush();
         } else {
-            return $this->render('article/addarticle.html.twig', [
+                return $this->render('admin/addarticle.html.twig', [
                 'form' => $form->createView(),
                 'errors' => $form->getErrors()
 
